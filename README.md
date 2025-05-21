@@ -109,3 +109,4 @@ class  CategoryRepository
 
 Создать сервис-провайдер для связывания интерфейса и реализации
 php artisan make:provider RepositoryServiceProvider
+В файле app/Providers/RepositoryServiceProvider.php в методе register() добавить
