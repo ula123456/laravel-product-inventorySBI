@@ -1,6 +1,10 @@
 создаю проект в ларавел
                     composer create-project laravel/laravel  laravel-product-inventorySBI
                      cd laravel-product-inventorySBI
+Инициализировать git-репозиторий и сделать первый коммит
+                    git init
+                    git add .
+                    git commit -m "Initial Laravel project"
 установил папку .osp
                       [laravel-product-inventorySBI.local]
                       php_engine        = PHP-8.3
