@@ -110,3 +110,17 @@ class  CategoryRepository
 Создать сервис-провайдер для связывания интерфейса и реализации
 php artisan make:provider RepositoryServiceProvider
 В файле app/Providers/RepositoryServiceProvider.php в методе register() добавить
+      
+      public function register()
+              {
+                  $this->app->bind(
+                      \App\Repositories\CategoryRepositoryInterface::class,
+                      \App\Repositories\CategoryRepository::class
+                  );
+                  $this->app->bind(
+                      \App\Repositories\ProductRepositoryInterface::class,
+                      \App\Repositories\ProductRepository::class
+                  );
+              }
+
+Зарегистрировать провайдер в config/app.php
