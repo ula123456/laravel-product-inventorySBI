@@ -26,4 +26,12 @@ migration прописал
    
    php artisan make:factory CategoryFactory --model=Category
    php artisan make:factory ProductFactory --model=Product
+Настройка сидер:
+   
+   php artisan make:seeder DatabaseSeeder
+   
+В нем создайте 3 категории и 200 товаров с рандомными категориями.
+
+Запуск сидера:
+     php artisan db:seed
 
