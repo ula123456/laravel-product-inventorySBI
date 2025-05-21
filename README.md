@@ -107,3 +107,5 @@ class  CategoryRepository
     public function delete(Product $product) { return $product->delete(); }
 }
 
+Создать сервис-провайдер для связывания интерфейса и реализации
+php artisan make:provider RepositoryServiceProvider
