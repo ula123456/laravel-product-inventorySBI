@@ -3,8 +3,12 @@
                      cd laravel-product-inventorySBI
 Инициализировать git-репозиторий и сделать первый коммит
                     git init
-                    git add .
-                    git commit -m "Initial Laravel project"
+                    Добавляет все изменения в Индекс, готовый к коммиту. 
+                    git commit -m "Описание коммита":
+                    Создает коммит с указанным сообщением. 
+                    git push origin main:
+Отправляет локальный коммит в удаленный репозиторий. 
+
 установил папку .osp
                       [laravel-product-inventorySBI.local]
                       php_engine        = PHP-8.3
