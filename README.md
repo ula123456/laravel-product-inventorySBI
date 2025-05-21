@@ -28,11 +28,53 @@ migration прописал
        php artisan migrate
 Создал фабрики:
    
-   php artisan make:factory CategoryFactory --model=Category
-   php artisan make:factory ProductFactory --model=Product
+   php artisan make:seeder CategorySeeder
+php artisan make:factory ProductFactory --model=Product
 Настройка сидер:
+   class CategorySeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        \App\Models\Category::insert([
+            ['name' => 'samartfoni'],
+            ['name' => 'charger'],
+            ['name' => 'cover'],
+        ]);
+    }
+}
+
+class ProductFactory extends Factory
+{
    
+    public function definition(): array
+    {
+        $category = Category::inRandomOrder()->first() ?? Category::factory()->create();
+    return [
+        'name' => $this->faker->words(2, true),
+        'price' => $this->faker->randomFloat(2, 100, 20000),
+        'barcode' => $this->faker->unique()->ean13(),
+        'category_id' => $category->id,
+    ];
+    }
+}
    php artisan make:seeder DatabaseSeeder
+   class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     */
+    public function run(): void
+    {
+        // User::factory(10)->create();
+        $this->call(CategorySeeder::class);
+        \App\Madels\Product::factory(200)->create();
+
+    }
+
+}
    
 В нем создайте 3 категории и 200 товаров с рандомными категориями.
 
