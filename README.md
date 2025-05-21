@@ -84,4 +84,26 @@ class ProductFactory extends Factory
 
 Запуск сидера:
      php artisan db:seed
+Репозитории и сервисы
+создал папку Repository
+создания интерфейса php artisan make:interface app/Repositories/ProductRepository
+создания интерфейса php artisan make:interface app/Repositories/CategoryRepository
+
+      в файле class ProductRepository
+{
+    public function all() { return Product::with('category')->get(); }
+    public function find($id) { return Product::with('category')->findOrFail($id); }
+    public function create(array $data) { return Product::create($data); }
+    public function update(Product $product, array $data) { $product->update($data); return $product; }
+    public function delete(Product $product) { return $product->delete(); }
+}
+также CategoryRepository
+class  CategoryRepository
+{
+    public function all() { return Product::with('category')->get(); }
+    public function find($id) { return Product::with('category')->findOrFail($id); }
+    public function create(array $data) { return Product::create($data); }
+    public function update(Product $product, array $data) { $product->update($data); return $product; }
+    public function delete(Product $product) { return $product->delete(); }
+}
 
