@@ -136,3 +136,49 @@ php artisan make:provider RepositoryServiceProvider
 
 php artisan make:controller Api/CategoryController --api
 php artisan make:controller Api/ProductController --api
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Models\Category;
+use Illuminate\Http\Request;
+
+class CategoryController extends Controller
+{
+    public function index()
+    {
+        return Category::all();
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->validate(['name' => 'required|string|max:255']);
+        return Category::create($data);
+    }
+
+    public function show(Category $category)
+    {
+        return $category;
+    }
+
+    public function update(Request $request, Category $category)
+    {
+        $data = $request->validate(['name' => 'required|string|max:255']);
+        $category->update($data);
+        return $category;
+    }
+
+    public function destroy(Category $category)
+    {
+        $category->delete();
+        return response()->noContent();
+    }
+}
+Для ProductController — аналогично, только добавь работу с полями name, price, category_id.
+
+      Созд. Resource-классы для красивого вывода
+      php artisan make:resource CategoryResource
+      php artisan make:resource ProductResource
+И возвращай, например, так: 
+      return CategoryResource::collection(Category::all()); прописвть в ресурсах
+
+  postman запускаем и указываем url c rout
