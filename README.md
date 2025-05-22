@@ -124,3 +124,15 @@ php artisan make:provider RepositoryServiceProvider
               }
 
 Зарегистрировать провайдер в config/app.php
+Откройте файл config/app.php Найдите массив providers
+Добавьте свой провайдер App\Providers\RepositoryServiceProvider::class,
+получется 'providers' => [
+    // ... стандартные провайдеры
+
+    App\Providers\RepositoryServiceProvider::class,
+],
+
+Создайте контроллеры для API
+
+php artisan make:controller Api/CategoryController --api
+php artisan make:controller Api/ProductController --api
